@@ -1,0 +1,58 @@
+{
+  "name": "@elyon/a2ui-crm",
+  "version": "0.1.0",
+  "description": "A restricted A2UI v0.9 runtime and React renderer for CRM AI coach panels",
+  "type": "module",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "docs",
+    "README.md",
+    "schemas",
+    "examples",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json && cp src/styles.css dist/styles.css",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "dev": "vite --host 127.0.0.1",
+    "demo:build": "vite build",
+    "check": "npm run typecheck && npm test && npm run build && npm run demo:build",
+    "schemas": "npm run build && node scripts/generate-schema.mjs",
+    "format": "prettier --write src tests demo docs examples scripts *.json *.ts *.md .github"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1 || ^19.0.0"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.1.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "happy-dom": "^20.8.9",
+    "prettier": "^3.9.10",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.5.3",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.3",
+    "zod-to-json-schema": "^3.25.2"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Elyon0517/a2ui-crm.git"
+  }
+}

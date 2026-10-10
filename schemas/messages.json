@@ -1,0 +1,621 @@
+{
+  "$ref": "#/definitions/Message",
+  "definitions": {
+    "Message": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "version": {
+              "type": "string",
+              "enum": [
+                "v0.9",
+                "v0.9.1"
+              ]
+            },
+            "createSurface": {
+              "type": "object",
+              "properties": {
+                "surfaceId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 128
+                },
+                "catalogId": {
+                  "type": "string",
+                  "const": "https://github.com/Elyon0517/a2ui-crm/catalog/v1"
+                },
+                "sendDataModel": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "surfaceId",
+                "catalogId"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "version",
+            "createSurface"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "version": {
+              "$ref": "#/definitions/Message/anyOf/0/properties/version"
+            },
+            "updateComponents": {
+              "type": "object",
+              "properties": {
+                "surfaceId": {
+                  "$ref": "#/definitions/Message/anyOf/0/properties/createSurface/properties/surfaceId"
+                },
+                "components": {
+                  "type": "array",
+                  "items": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "$ref": "#/definitions/Message/anyOf/0/properties/createSurface/properties/surfaceId"
+                          },
+                          "component": {
+                            "type": "string",
+                            "const": "Text"
+                          },
+                          "text": {
+                            "anyOf": [
+                              {
+                                "type": "string",
+                                "maxLength": 10000
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "path": {
+                                    "type": "string",
+                                    "maxLength": 1024
+                                  }
+                                },
+                                "required": [
+                                  "path"
+                                ],
+                                "additionalProperties": false
+                              }
+                            ]
+                          },
+                          "variant": {
+                            "type": "string",
+                            "enum": [
+                              "h2",
+                              "body",
+                              "caption"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "component",
+                          "text"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "$ref": "#/definitions/Message/anyOf/0/properties/createSurface/properties/surfaceId"
+                          },
+                          "component": {
+                            "type": "string",
+                            "const": "Row"
+                          },
+                          "children": {
+                            "anyOf": [
+                              {
+                                "type": "array",
+                                "items": {
+                                  "$ref": "#/definitions/Message/anyOf/0/properties/createSurface/properties/surfaceId"
+                                },
+                                "maxItems": 500
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "componentId": {
+                                    "$ref": "#/definitions/Message/anyOf/0/properties/createSurface/properties/surfaceId"
+                                  },
+                                  "path": {
+                                    "$ref": "#/definitions/Message/anyOf/1/properties/updateComponents/properties/components/items/anyOf/0/properties/text/anyOf/1/properties/path"
+                                  }
+                                },
+                                "required": [
+                                  "componentId",
+                                  "path"
+                                ],
+                                "additionalProperties": false
+                              }
+                            ]
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "component",
+                          "children"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "$ref": "#/definitions/Message/anyOf/0/properties/createSurface/properties/surfaceId"
+                          },
+                          "component": {
+                            "type": "string",
+                            "const": "Column"
+                          },
+                          "children": {
+                            "anyOf": [
+                              {
+                                "type": "array",
+                                "items": {
+                                  "$ref": "#/definitions/Message/anyOf/0/properties/createSurface/properties/surfaceId"
+                                },
+                                "maxItems": 500
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "componentId": {
+                                    "$ref": "#/definitions/Message/anyOf/0/properties/createSurface/properties/surfaceId"
+                                  },
+                                  "path": {
+                                    "$ref": "#/definitions/Message/anyOf/1/properties/updateComponents/properties/components/items/anyOf/0/properties/text/anyOf/1/properties/path"
+                                  }
+                                },
+                                "required": [
+                                  "componentId",
+                                  "path"
+                                ],
+                                "additionalProperties": false
+                              }
+                            ]
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "component",
+                          "children"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "$ref": "#/definitions/Message/anyOf/0/properties/createSurface/properties/surfaceId"
+                          },
+                          "component": {
+                            "type": "string",
+                            "const": "List"
+                          },
+                          "children": {
+                            "anyOf": [
+                              {
+                                "type": "array",
+                                "items": {
+                                  "$ref": "#/definitions/Message/anyOf/0/properties/createSurface/properties/surfaceId"
+                                },
+                                "maxItems": 500
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "componentId": {
+                                    "$ref": "#/definitions/Message/anyOf/0/properties/createSurface/properties/surfaceId"
+                                  },
+                                  "path": {
+                                    "$ref": "#/definitions/Message/anyOf/1/properties/updateComponents/properties/components/items/anyOf/0/properties/text/anyOf/1/properties/path"
+                                  }
+                                },
+                                "required": [
+                                  "componentId",
+                                  "path"
+                                ],
+                                "additionalProperties": false
+                              }
+                            ]
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "component",
+                          "children"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "$ref": "#/definitions/Message/anyOf/0/properties/createSurface/properties/surfaceId"
+                          },
+                          "component": {
+                            "type": "string",
+                            "const": "Card"
+                          },
+                          "child": {
+                            "$ref": "#/definitions/Message/anyOf/0/properties/createSurface/properties/surfaceId"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "component",
+                          "child"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "$ref": "#/definitions/Message/anyOf/0/properties/createSurface/properties/surfaceId"
+                          },
+                          "component": {
+                            "type": "string",
+                            "const": "Divider"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "component"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "$ref": "#/definitions/Message/anyOf/0/properties/createSurface/properties/surfaceId"
+                          },
+                          "component": {
+                            "type": "string",
+                            "const": "Button"
+                          },
+                          "child": {
+                            "$ref": "#/definitions/Message/anyOf/0/properties/createSurface/properties/surfaceId"
+                          },
+                          "action": {
+                            "type": "object",
+                            "properties": {
+                              "event": {
+                                "type": "object",
+                                "properties": {
+                                  "name": {
+                                    "$ref": "#/definitions/Message/anyOf/0/properties/createSurface/properties/surfaceId"
+                                  },
+                                  "context": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                      "anyOf": [
+                                        {
+                                          "type": "string"
+                                        },
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "boolean"
+                                        },
+                                        {
+                                          "type": "null"
+                                        },
+                                        {
+                                          "$ref": "#/definitions/Message/anyOf/1/properties/updateComponents/properties/components/items/anyOf/0/properties/text/anyOf/1"
+                                        }
+                                      ]
+                                    },
+                                    "default": {}
+                                  }
+                                },
+                                "required": [
+                                  "name"
+                                ],
+                                "additionalProperties": false
+                              }
+                            },
+                            "required": [
+                              "event"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "disabled": {
+                            "anyOf": [
+                              {
+                                "type": "boolean"
+                              },
+                              {
+                                "$ref": "#/definitions/Message/anyOf/1/properties/updateComponents/properties/components/items/anyOf/0/properties/text/anyOf/1"
+                              }
+                            ]
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "component",
+                          "child",
+                          "action"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "$ref": "#/definitions/Message/anyOf/0/properties/createSurface/properties/surfaceId"
+                          },
+                          "component": {
+                            "type": "string",
+                            "const": "TextField"
+                          },
+                          "label": {
+                            "$ref": "#/definitions/Message/anyOf/1/properties/updateComponents/properties/components/items/anyOf/0/properties/text"
+                          },
+                          "value": {
+                            "$ref": "#/definitions/Message/anyOf/1/properties/updateComponents/properties/components/items/anyOf/0/properties/text/anyOf/1"
+                          },
+                          "required": {
+                            "type": "boolean"
+                          },
+                          "variant": {
+                            "type": "string",
+                            "enum": [
+                              "shortText",
+                              "longText"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "component",
+                          "label",
+                          "value"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "$ref": "#/definitions/Message/anyOf/0/properties/createSurface/properties/surfaceId"
+                          },
+                          "component": {
+                            "type": "string",
+                            "const": "CheckBox"
+                          },
+                          "label": {
+                            "$ref": "#/definitions/Message/anyOf/1/properties/updateComponents/properties/components/items/anyOf/0/properties/text"
+                          },
+                          "value": {
+                            "$ref": "#/definitions/Message/anyOf/1/properties/updateComponents/properties/components/items/anyOf/0/properties/text/anyOf/1"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "component",
+                          "label",
+                          "value"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "$ref": "#/definitions/Message/anyOf/0/properties/createSurface/properties/surfaceId"
+                          },
+                          "component": {
+                            "type": "string",
+                            "const": "ChoicePicker"
+                          },
+                          "label": {
+                            "$ref": "#/definitions/Message/anyOf/1/properties/updateComponents/properties/components/items/anyOf/0/properties/text"
+                          },
+                          "value": {
+                            "$ref": "#/definitions/Message/anyOf/1/properties/updateComponents/properties/components/items/anyOf/0/properties/text/anyOf/1"
+                          },
+                          "options": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "label": {
+                                  "type": "string"
+                                },
+                                "value": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "label",
+                                "value"
+                              ],
+                              "additionalProperties": false
+                            },
+                            "maxItems": 100
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "component",
+                          "label",
+                          "value",
+                          "options"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "$ref": "#/definitions/Message/anyOf/0/properties/createSurface/properties/surfaceId"
+                          },
+                          "component": {
+                            "type": "string",
+                            "const": "Metric"
+                          },
+                          "label": {
+                            "$ref": "#/definitions/Message/anyOf/1/properties/updateComponents/properties/components/items/anyOf/0/properties/text"
+                          },
+                          "value": {
+                            "$ref": "#/definitions/Message/anyOf/1/properties/updateComponents/properties/components/items/anyOf/0/properties/text"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "component",
+                          "label",
+                          "value"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "$ref": "#/definitions/Message/anyOf/0/properties/createSurface/properties/surfaceId"
+                          },
+                          "component": {
+                            "type": "string",
+                            "const": "EvidenceCard"
+                          },
+                          "label": {
+                            "$ref": "#/definitions/Message/anyOf/1/properties/updateComponents/properties/components/items/anyOf/0/properties/text"
+                          },
+                          "excerpt": {
+                            "$ref": "#/definitions/Message/anyOf/1/properties/updateComponents/properties/components/items/anyOf/0/properties/text"
+                          },
+                          "action": {
+                            "$ref": "#/definitions/Message/anyOf/1/properties/updateComponents/properties/components/items/anyOf/6/properties/action"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "component",
+                          "label",
+                          "excerpt"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "$ref": "#/definitions/Message/anyOf/0/properties/createSurface/properties/surfaceId"
+                          },
+                          "component": {
+                            "type": "string",
+                            "const": "Notice"
+                          },
+                          "text": {
+                            "$ref": "#/definitions/Message/anyOf/1/properties/updateComponents/properties/components/items/anyOf/0/properties/text"
+                          },
+                          "tone": {
+                            "type": "string",
+                            "enum": [
+                              "info",
+                              "success",
+                              "warning"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "component",
+                          "text"
+                        ],
+                        "additionalProperties": false
+                      }
+                    ]
+                  },
+                  "maxItems": 500
+                }
+              },
+              "required": [
+                "surfaceId",
+                "components"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "version",
+            "updateComponents"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "version": {
+              "$ref": "#/definitions/Message/anyOf/0/properties/version"
+            },
+            "updateDataModel": {
+              "type": "object",
+              "properties": {
+                "surfaceId": {
+                  "$ref": "#/definitions/Message/anyOf/0/properties/createSurface/properties/surfaceId"
+                },
+                "path": {
+                  "$ref": "#/definitions/Message/anyOf/1/properties/updateComponents/properties/components/items/anyOf/0/properties/text/anyOf/1/properties/path"
+                },
+                "value": {}
+              },
+              "required": [
+                "surfaceId"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "version",
+            "updateDataModel"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "version": {
+              "$ref": "#/definitions/Message/anyOf/0/properties/version"
+            },
+            "deleteSurface": {
+              "type": "object",
+              "properties": {
+                "surfaceId": {
+                  "$ref": "#/definitions/Message/anyOf/0/properties/createSurface/properties/surfaceId"
+                }
+              },
+              "required": [
+                "surfaceId"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "version",
+            "deleteSurface"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

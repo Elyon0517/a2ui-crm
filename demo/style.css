@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  background: #f2f5fa;
+  color: #18243c;
+  font: 15px/1.6 system-ui;
+}
+main {
+  max-width: 1160px;
+  margin: auto;
+  padding: 50px 28px;
+}
+header {
+  padding: 25px 0 45px;
+}
+header span {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #0e4af7;
+}
+h1 {
+  font-size: clamp(36px, 6vw, 68px);
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin: 20px 0;
+}
+header p {
+  color: #57637d;
+}
+button {
+  border: 0;
+  border-radius: 10px;
+  padding: 12px 18px;
+  background: #0e4af7;
+  color: white;
+  cursor: pointer;
+}
+a {
+  color: #0e4af7;
+  margin-left: 16px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+article,
+main > section {
+  background: white;
+  padding: 25px;
+  border: 1px solid #d6deed;
+  border-radius: 20px;
+}
+h3 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #57637d;
+}
+pre {
+  background: #14213a;
+  color: #d8e8ff;
+  border-radius: 12px;
+  padding: 16px;
+  max-height: 250px;
+  overflow: auto;
+  font-size: 12px;
+}
+main > section {
+  margin-top: 30px;
+}
+textarea {
+  width: 100%;
+  min-height: 120px;
+  box-sizing: border-box;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+footer {
+  padding-top: 30px;
+  color: #57637d;
+  font-size: 12px;
+}
+@media (max-width: 750px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  main {
+    padding: 24px 16px;
+  }
+}
