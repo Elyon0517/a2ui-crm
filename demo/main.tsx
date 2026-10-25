@@ -128,11 +128,16 @@ function App() {
           to useful action.
         </h1>
         <p>A trusted React catalog for the next generation of AI Coach.</p>
-        <button onClick={reset}>Reset demo</button>{" "}
+        <button onClick={() => { reset(); setEvents([]); setRaw(""); setError(""); }}>Reset demo</button>{" "}
         <a href="https://github.com/Elyon0517/a2ui-crm">
           Source & integration guide ↗
         </a>
       </header>
+      <div className="demo-status" aria-label="Dashboard status">
+        <div><strong>2</strong><span>Live React surfaces</span></div>
+        <div><strong>JSON → UI</strong><span>Trusted component catalog</span></div>
+        <div><strong>{events.length}</strong><span>Local action events</span></div>
+      </div>
       <div className="grid">
         <article>
           <h3>01 · Evidence & actions</h3>

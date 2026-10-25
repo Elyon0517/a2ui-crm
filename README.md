@@ -4,6 +4,18 @@
 
 **喜欢就 Star ⭐！** [给项目一个 Star](https://github.com/Elyon0517/a2ui-crm)，帮助更多开发者发现它。
 
+## See it in action
+
+![A2UI CRM dashboard: evidence, a bound learning plan, and inspected action payloads](docs/screenshots/coach-dashboard.png)
+
+**Agent JSON → trusted React components → inspectable application actions.**
+Use this when your CRM needs an AI Coach panel without executing model-generated HTML.
+The demo dashboard lets you edit a learning goal, choose a practice duration, and inspect
+exactly what the action sends. Two surfaces share the same restricted runtime.
+
+**Try this:** change the goal → click **Preview plan** → inspect the payload → paste an
+`updateDataModel` message to see JSON update the form. All data is synthetic and actions stay local.
+
 ## Quick start
 
 需要 Node.js 22.12+（推荐 Node 24）。无需 Gemini key，也无需 CRM 后端。
@@ -93,3 +105,15 @@ npm run format
 ```
 
 MIT license。A2UI 来源与规范链接记录在 Discovery；未复制 Google SDK 实现。欢迎 Issue / PR，喜欢就 Star ⭐。
+
+## Browser acceptance & screenshots
+
+```bash
+npm ci
+npx playwright install chromium
+npm run test:e2e
+```
+
+The browser test verifies form binding, action payloads, JSON-to-UI updates, malformed message
+errors, complete demo reset, and a 390px viewport. It regenerates the screenshot above from
+actual interactions. See [validation details](docs/SHOWCASE.md).

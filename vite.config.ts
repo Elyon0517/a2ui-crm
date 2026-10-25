@@ -1,2 +1,5 @@
-import { defineConfig } from "vite";
-export default defineConfig({ build: { outDir: "demo-dist" } });
+import { defineConfig } from "vitest/config";
+export default defineConfig({
+  build: { outDir: "demo-dist" },
+  test: { include: ["tests/**/*.test.{ts,tsx}"] },
+});
