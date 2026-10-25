@@ -117,3 +117,12 @@ npm run test:e2e
 The browser test verifies form binding, action payloads, JSON-to-UI updates, malformed message
 errors, complete demo reset, and a 390px viewport. It regenerates the screenshot above from
 actual interactions. See [validation details](docs/SHOWCASE.md).
+
+## Source, copyright and attribution
+
+Original project: [Elyon0517/a2ui-crm](https://github.com/Elyon0517/a2ui-crm), maintained by
+[Elyon0517](https://github.com/Elyon0517). Project code is available under the [MIT License](LICENSE), subject to file-specific and third-party notices. Redistributions must preserve the applicable copyright and permission notices.
+
+For articles, demos and derivatives, please credit the original project and link here.
+That link is a courtesy request, not an extra restriction on an existing open-source license.
+See [copyright and third-party boundaries](COPYRIGHT.md) and [citation metadata](CITATION.cff).
