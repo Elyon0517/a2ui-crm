@@ -88,3 +88,8 @@ footer {
     padding: 24px 16px;
   }
 }
+
+.demo-status { display: flex; flex-wrap: wrap; gap: 16px; margin: -12px 0 28px; }
+.demo-status > div { flex: 1; min-width: 160px; padding: 16px 20px; border: 1px solid #d6deed; border-radius: 12px; background: #fff; }
+.demo-status strong { display: block; color: #0e4af7; font-size: 22px; }
+.demo-status span { color: #57637d; font-size: 12px; }
